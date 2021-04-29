@@ -1,0 +1,98 @@
+.user-nav {
+    grid-column: 1 / 3;
+    min-height: calc(100vh - var(--header-height));
+    // background-color: #e7e5e5;
+    background-color: $color-primary-light;
+    // padding: 1rem .5rem;
+    transform: translateX(0);
+
+    @media only screen and (max-width: $bp-extra_large) {
+        grid-column: 1 / 4;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 25rem;
+
+        &--hidden {
+            transform: translateX(-100%);
+        }
+    }
+
+
+    // USER TOOLS
+    &__user-tools {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+        width: 100%;
+    }
+
+    &__hello {
+        align-self: center;
+        margin: 2rem 0;
+        font-size: 2rem;
+        color: $color-special1;
+        width: 90%;
+        text-align: center;
+        padding-bottom: .5rem;
+        border-bottom: 2px solid $color-special1;
+        user-select: none;
+
+        span {
+            color: $color-special2;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        margin-left: 2rem;
+        font-size: 1.6rem;
+        color: $color-text;
+    }
+
+    &__item{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: transform .5s;
+
+        &:not(:last-of-type) {
+            margin-bottom: 2rem;
+        }
+
+        &--link,
+        &--link:link,
+        &--link:active {
+            color: inherit;
+        }
+
+        &--icon {
+            fill: $color-text;
+            width: 2rem;
+            height: 2rem;
+            margin-right: 1rem;
+        }
+
+        &:hover {
+            color: $color-special2;
+            transform: translateX(.5rem);
+        }
+
+        &:hover &--icon {
+            fill: $color-special2;
+        }
+    }
+
+
+
+    // ADMIN TOOLS
+    &__admin-tools {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+}

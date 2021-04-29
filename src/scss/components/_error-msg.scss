@@ -1,0 +1,59 @@
+.message-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba($color-primary-dark, .8);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__box {
+        width: 50rem;
+        background-color: rgba($color-primary-light, .8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+    }
+
+    &__message {
+        margin: 5rem 1rem;
+        color: $color-special1;
+        font-size: 2rem;
+
+        &--error {
+            color: $color-special2;
+        }
+    }
+
+    &__button {
+        font-family: inherit;
+        font-size: 2rem;
+        padding: 1rem 5rem;
+        margin: 2rem;
+        color: $color-special2;
+        background-color: $color-text;
+        border: 1px solid $color-special1;
+        border-radius: 40px;
+        cursor: pointer;
+        transition: all .3s;
+    
+        &:hover {
+            background-color: $color-special1;
+        }
+    
+        &:active {
+            transform: scale(.9);
+        }
+    }
+}
+
+.message-screen--hidden {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    z-index: -1;
+}

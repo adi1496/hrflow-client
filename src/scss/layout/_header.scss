@@ -1,0 +1,121 @@
+.header {
+    grid-column: 1 / -1;
+    width: 100%;
+    height: var(--header-height);
+    background-image: linear-gradient(to right, $color-special1, $color-special2);
+    // display: grid;
+    // grid-template-columns: 1fr max-content;
+    // column-gap: 1rem;
+    // align-items: center;
+
+    &__content {
+        width: 100%;
+        height: 5.7rem;
+        background-color: $color-primary;
+        display: grid;
+        grid-template-columns: 1fr max-content;
+        column-gap: 1rem;
+        align-items: center;
+    }
+
+    // LEFT SIDE
+    &__left {
+        margin-left: 2rem;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    &__logo {
+        margin-right: 4rem;
+        // cursor: pointer;
+
+        img {
+            height: 5rem;
+            width: auto;
+        }
+    }
+
+    &__nav {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    &__item {
+        font-size: 1.8rem;
+        color: $color-text;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+
+        &:not(:last-of-type) {
+            margin-right: 2rem;
+        }
+
+        &:hover {
+            background-color: rgba($color-special1, .3);
+        }
+    }
+
+    &__item:hover &__link {
+        animation: shake .2s;
+    }
+
+    &__link {
+        color: inherit;
+    }
+
+
+    // RIGHT SIDE
+    &__right {
+        display: flex;
+        justify-items: center;
+        margin-right: 2rem;
+    }
+
+    &__notifications {
+
+    }
+
+    &__user {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        padding: .5rem;
+        border-radius: 10px;
+
+        &:hover {
+            background-color: rgba($color-special1, .5);
+        }
+    }
+
+    &__user-photo {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        margin-right: .5rem;
+    }
+
+    &__user-text {
+        color: $color-text;
+        font-size: 1.6rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__user-name {
+
+    }
+
+    &__user-arrow {
+        width: 2rem;
+        height: 1.5rem;
+        background-color: $color-special2;
+        display: inline-block;
+        clip-path: polygon(0 0, 50% 60%, 100% 0, 50% 100%, 0 0);
+    }
+
+}

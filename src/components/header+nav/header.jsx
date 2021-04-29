@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return(
@@ -9,13 +10,13 @@ const Header = () => {
                     </div>
                     <nav className="header__nav">
                         <div className="header__item">
-                            <a href="#" className="header__link">Home</a>
+                            <Link to="#" className="header__link">Home</Link>
                         </div>
                         <div className="header__item">
-                            <a href="#" className="header__link">People</a>
+                            <Link to="#" className="header__link">People</Link>
                         </div>
                         <div className="header__item">
-                            <a href="#" className="header__link">Teams</a>
+                            <Link to="#" className="header__link">Teams</Link>
                         </div>
                     </nav>
                 </div>
@@ -23,7 +24,7 @@ const Header = () => {
                 <div className="header__right">
                     <div className="header__notifications"></div>
                     <div className="header__user">
-                        <img src="img/user-adi.jpg" alt="user photo" className="header__user-photo" />
+                        <img src="img/user-adi.jpg" alt="user" className="header__user-photo" />
                         <div className="header__user-text">
                             <span className="header__user-name">Adrian</span>
                             <div className="header__user-arrow"></div>

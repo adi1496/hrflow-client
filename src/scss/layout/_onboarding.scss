@@ -1,0 +1,150 @@
+.onboarding {
+    width: 100%;
+    // height: 100%;
+    // background-color: #dad8d8;
+    padding: 4rem 2rem;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+
+
+    &__title {
+        color: $color-special1;
+        grid-column: 1 / -1;
+        font-size: 3rem;
+        text-align: center;
+
+        span {
+            color: $color-special2;
+        }
+    }
+
+    &__progress {
+        grid-column: 1 / -1;
+        height: 1rem;
+        background-color: $color-special2;
+        border-radius: 100px;
+        position: relative;
+        overflow-x: hidden;
+        margin-bottom: 5rem;
+    }
+
+    &__progress::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 5rem;
+        border-radius: 100px;
+        background-color: rgba($color-text, .2);
+        animation: progress-bar-light 3s ease-in infinite;
+    }
+
+    &__progress-bar {
+        height: 100%;
+        width: 0%;
+        background-color: $color-special1;
+        border-radius: 100px;
+        animation: progress-bar-placeholder 10s ease-in;
+    }
+
+    &__photo {
+        margin-top: 10rem;
+    }
+
+    &__img {
+        width: 50rem;
+    }
+
+    &__form {
+        padding: 3rem 4rem;
+        color: $color-special1-dark;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem
+    }
+
+    &__form-box {
+        font-size: 1.6rem;
+        // display: flex;
+        // flex-direction: column;
+        // flex-grow: -1;
+        display: grid;
+        grid-template-columns: max-content;
+
+        &:not(:last-of-type) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__label {
+    }
+
+    &__input,
+    &__select,
+    &__date {
+        font-family: inherit;
+        padding: .5rem 1rem;
+        border: 1px solid $color-special2;
+        border-radius: 5px;
+        outline: none;
+        font-size: 1.6rem;
+        color: $color-special1;
+    }
+    
+    &__input {
+    }
+
+    &__select {
+
+    }
+
+
+    &__buttons {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: start;
+    }
+
+    &__button {
+        margin-top: 3rem;
+        font-family: inherit;
+        font-size: 1.7rem;
+        padding: 1rem 1rem;
+        border: none;
+        width: 8rem;
+        color: $color-text;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        
+        &--next {
+            justify-self: end;
+            background-color: $color-special1;
+            text-align: left;
+            clip-path: polygon(0 0, 70% 0, 100% 50%, 70% 100%, 0 100%);
+        }
+
+        &--back {
+            background-color: $color-special2;
+            text-align: right;
+            clip-path: polygon(100% 0, 30% 0, 0 50%, 30% 100%, 100% 100%);
+        }
+    }
+
+    &__button::after {
+        visibility: hidden;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color-text, .4);
+    }
+
+    &__button:hover::after {
+        visibility: visible;
+    }
+}

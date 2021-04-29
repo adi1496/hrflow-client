@@ -1,108 +1,173 @@
+import { useState } from "react";
 import { Link } from "react-router-dom"
 
+import LogoSVG from './../logo/logo-svg.jsx';
+import {fetchPOST} from './../../utils/fetch.js';
+import AppMsg from './../app-messages/app-msg.jsx';
+
 const Register = () => {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [businessEmail, setBusinessEmail] = useState('');
+    const [businessPhone, setbusinessPhone] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [companyName, setCompanyName] = useState('');
+    const [numberEmployees, setNumberEmployees] = useState(null);
+    const [country, setCountry] = useState('');
+    const [city, setCity] = useState('');
+    const [address, setAddress] = useState('');
+    const [postalCode, setPostalCode] = useState('');
+
+    const [appMessage, setAppMessage] = useState({
+        hidden: true,
+        error: false,
+        message: '',
+    });
+
+    const handleAppMessageBtn = event => {
+        event.preventDefault();
+        setAppMessage({
+            hidden: true,
+            error: false,
+            message: ''
+        })
+    }
+
+
+    const handleSubmit = async event => {
+        event.preventDefault();
+        if(!numberEmployees) {
+            setAppMessage({
+                hidden: false,
+                error: true,
+                message: 'Please select numbers of Employees plan'
+            });
+            return;
+        };
+
+        const registerData = {
+            firstName,
+            lastName,
+            businessEmail,
+            businessPhone,
+            password,
+            confirmPassword,
+            companyName,
+            numberEmployees,
+            country,
+            city,
+            address,
+            postalCode,
+        }
+
+        for(let data in registerData) {
+            if(!registerData[data]) {
+                setAppMessage({
+                    hidden: false,
+                    error: true,
+                    message: 'Please fiil all camps'
+                })
+                return;
+            }
+        }
+
+        const response = await fetchPOST('/api/v1/auth/signup-company', registerData);
+
+        if(response.status === 'fail' || response.status === 'error') return setAppMessage({
+            hidden: false,
+            error: true,
+            message: response.message
+        });
+
+        setAppMessage({
+            hidden: false,
+            error: false,
+            message: 'Company registered successfully! Please check your email for verification!'
+        });
+
+        return;
+    }
+
+
     return (
-        <div className="main-login">
+    <div className="main-login">
+        <AppMsg appMessage={appMessage} handleAppMessageBtn={handleAppMessageBtn} />
         <div className="login">
-            <div className="login__logo">
-                <svg className="logo-login" width="551" height="126" viewBox="0 0 551 126" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M470.5 106L449 31.5H459.5L475.5 90H476.5L494 31.5H505L522.5 90H524L539.5 31.5H550L529 106H517.5L499.5 46H499L482 106H470.5Z" fill="white" stroke="white"/>
-                    <path d="M405.5 30C455.5 30 457.5 106.5 405.5 107.5C354 107.5 353 30 405.5 30Z" fill="white" stroke="white"/>
-                    <path d="M316 31V106.5H361V96.5H327V31H316Z" fill="white" stroke="white"/>
-                    <path d="M255.5 31.5V106H266V74.5H300V64.5H266V41H302.5V31.5H255.5Z" fill="white" stroke="white"/>
-                    <path d="M214 56V106H223.5V77.5C226.746 66.6584 231.237 64.2237 243 65V55H235.5C230.36 55.9248 227.815 58.2196 223.5 63.5V56H214Z" fill="white" stroke="white"/>
-                    <path d="M156 26.5V106H165L165.5 76.5L167 72.5C169.366 66.4667 171.205 64.6345 179 64C185.239 64.5226 188.221 65.8055 190 72.5V106H199.5V68.5C196.578 58.8815 192.654 56.251 184 55.5C174.163 55.0313 170.376 57.6178 165.5 63.5V26.5H156Z" fill="white" stroke="white"/>
-                    <path d="M98.5 125C72.3463 108.866 61.142 97.8808 60 70H19C9.3638 75.1278 3.79302 77.7612 0.5 92V121C0.768305 122.869 1.89078 123.686 4.5 125H98.5Z" fill="#7D84FF"/>
-                    <path d="M98.5 125C72.3463 108.866 61.142 97.8808 60 70H19C9.3638 75.1278 3.79302 77.7612 0.5 92V121C0.768305 122.869 1.89078 123.686 4.5 125H98.5Z" fill="url(#paint0_linear)"/>
-                    <path d="M98.5 125C72.3463 108.866 61.142 97.8808 60 70H19C9.3638 75.1278 3.79302 77.7612 0.5 92V121C0.768305 122.869 1.89078 123.686 4.5 125H98.5Z" stroke="black"/>
-                    <path d="M98.9999 59C143.5 33.5 149.5 97 98.9999 121C49 99 53 32.5 98.9999 59Z" fill="#7D84FF"/>
-                    <path d="M98.9999 59C143.5 33.5 149.5 97 98.9999 121C49 99 53 32.5 98.9999 59Z" fill="url(#paint1_linear)"/>
-                    <path d="M98.9999 59C143.5 33.5 149.5 97 98.9999 121C49 99 53 32.5 98.9999 59Z" stroke="black"/>
-                    <path d="M49.9998 0.999908C84.4996 0.999932 87 53.9999 49.9998 53.9999C12.9996 53.9999 15.5 0.999885 49.9998 0.999908Z" fill="#7D84FF"/>
-                    <path d="M49.9998 0.999908C84.4996 0.999932 87 53.9999 49.9998 53.9999C12.9996 53.9999 15.5 0.999885 49.9998 0.999908Z" fill="url(#paint2_linear)"/>
-                    <path d="M49.9998 0.999908C84.4996 0.999932 87 53.9999 49.9998 53.9999C12.9996 53.9999 15.5 0.999885 49.9998 0.999908Z" stroke="black"/>
-                    <defs>
-                    <linearGradient id="paint0_linear" x1="66" y1="97" x2="8.48318e-07" y2="97" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#F265FF"/>
-                    <stop offset="1" stopColor="white" stopOpacity="0"/>
-                    </linearGradient>
-                    <linearGradient id="paint1_linear" x1="135" y1="81" x2="63" y2="81.5" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#F265FF"/>
-                    <stop offset="1" stopColor="white" stopOpacity="0"/>
-                    </linearGradient>
-                    <linearGradient id="paint2_linear" x1="73" y1="27" x2="23" y2="27" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#F265FF"/>
-                    <stop offset="1" stopColor="white" stopOpacity="0"/>
-                    </linearGradient>
-                    </defs>
-                </svg>
-            </div>
+            <div className="login__logo"><LogoSVG/></div>
     
             <div className="login__form">
                 <h4 className="login__welcome">Welcome to hrFLOW</h4>
     
                 <div className="login__box">
                     <label htmlFor="first-name" className="login__label">First Name</label>
-                    <input id="first-name" type="text" className="login__input" />
+                    <input onChange={e => setFirstName(e.target.value)} id="first-name" type="text" className="login__input" />
                 </div>
     
                 <div className="login__box">
                     <label htmlFor="last-name" className="login__label">Last Name</label>
-                    <input id="last-name" type="text" className="login__input" />
+                    <input onChange={e => setLastName(e.target.value)} id="last-name" type="text" className="login__input" />
                 </div>
     
                 <div className="login__box login__box--2x">
                     <label htmlFor="business-email" className="login__label">Business E-mail</label>
-                    <input id="business-email" type="email" className="login__input" />
+                    <input onChange={e => setBusinessEmail(e.target.value)} id="business-email" type="email" className="login__input" />
+                </div>
+
+                <div className="login__box login__box--2x">
+                    <label htmlFor="business-phone" className="login__label">Business Phone</label>
+                    <input onChange={e => setbusinessPhone(e.target.value)} id="business-phone" type="email" className="login__input" />
                 </div>
                 
                 <div className="login__box login__box--2x">
                     <label htmlFor="password" className="login__label">Password</label>
-                    <input id="password" type="password" className="login__input" />
+                    <input onChange={e => setPassword(e.target.value)} id="password" type="password" className="login__input" />
                 </div>
                 <div className="login__box login__box--2x">
                     <label htmlFor="confirm-password" className="login__label">Confirm Password</label>
-                    <input id="confirm-password" type="password" className="login__input" />
+                    <input onChange={e => setConfirmPassword(e.target.value)} id="confirm-password" type="password" className="login__input" />
                 </div>
     
                 <div className="login__box">
                     <label htmlFor="company-name" className="login__label">Company Name</label>
-                    <input id="company-name" type="text" className="login__input" />
+                    <input onChange={e => setCompanyName(e.target.value)} id="company-name" type="text" className="login__input" />
                 </div>
     
                 <div className="login__box">
                     <label htmlFor="num-employees" className="login__label">Number of Employees</label>
                     <div className="login__select-div">
-                        <select id="num-employees" className="login__select">
+                        <select onChange={e => setNumberEmployees(e.target.value)} id="num-employees" className="login__select">
+                        <option value="" defaultValue>Select</option>
                             <option value="0-20">0-20</option>
                             <option value="20-100">20-100</option>
-                            <option value="100+">100+</option>
+                            <option value="100-500">100-500</option>
+                            <option value="500+">500+</option>
                         </select>
                     </div>
                 </div>
     
                 <div className="login__box">
                     <label htmlFor="country" className="login__label">Country</label>
-                    <input id="country" type="text" className="login__input" />
+                    <input onChange={e => setCountry(e.target.value)} id="country" type="text" className="login__input" />
                 </div>
     
                 <div className="login__box">
                     <label htmlFor="city" className="login__label">City</label>
-                    <input id="city" type="text" className="login__input" />
+                    <input onChange={e => setCity(e.target.value)} id="city" type="text" className="login__input" />
                 </div>
     
                 <div className="login__box login__box--2x">
                     <label htmlFor="address" className="login__label">Address</label>
-                    <input id="address" type="text" className="login__input" />
+                    <input onChange={e => setAddress(e.target.value)} id="address" type="text" className="login__input" />
                 </div>
     
                 <div className="login__box">
                     <label htmlFor="postal-code" className="login__label">Postal Code</label>
-                    <input id="postal-code" type="text" className="login__input" />
+                    <input onChange={e => setPostalCode(e.target.value)} id="postal-code" type="text" className="login__input" />
                 </div>
     
                 <div className="login__box login__box--2x">
-                    <button className="login__button">Register</button>
+                    <button onClick={handleSubmit} className="login__button">Register</button>
                 </div>
     
                 <div className="login__box login__box--2x">

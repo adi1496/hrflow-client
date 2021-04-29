@@ -1,0 +1,41 @@
+@keyframes shake {
+    0% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(1rem);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    75% {
+        transform: translateY(-1rem);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes progress-bar-placeholder {
+    0%{
+        width: 1%;
+    }
+
+    100%{
+        width: 100%;
+    }
+}
+
+@keyframes progress-bar-light {
+    0%{
+        left: 0;
+    }
+
+    100%{
+        left: 100%;
+    }
+}

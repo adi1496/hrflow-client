@@ -5,7 +5,7 @@ const MyProfile = () => {
                 <div className="profile__user-information">
                     <div className="profile__details">
                         <figure className="profile__photo">
-                            <img src="img/user-adi.jpg" alt="user-photo" className="profile__img" />
+                            <img src="img/user-adi.jpg" alt="user" className="profile__img" />
                         </figure>
                         <div className="profile__user-description">
                             <h3 className="profile__name">Adrian Matei</h3>

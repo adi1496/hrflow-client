@@ -1,7 +1,5 @@
 
 const AppMsg = ({appMessage, handleAppMessageBtn}) => {
-
-    console.log(appMessage);
     return (
         <div className={`message-screen ${appMessage.hidden ? 'message-screen--hidden' : ''}`}>
             <div className="message-screen__box">

@@ -5,11 +5,10 @@ import LogoSVG from './../logo/logo-svg.jsx';
 import {fetchPOST} from './../../utils/fetch.js';
 import AppMsg from './../app-messages/app-msg.jsx';
 
-const Login = ({handleUser}) => {
+const Login = ({user, handleUser}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [user, setUser] = useState(null);
     const [appMessage, setAppMessage] = useState({
         hidden: true,
         error: false,

@@ -13,10 +13,12 @@ $color-text: #ffffff;
 
 
 // break-points
-$bp-extra_large: 75em;  // 1200px
+$bp-extra_large: 75em;   // 1200px
 $bp-large: 59.375em;     // 950px
 $bp-medium: 46.875em;   // 750px
+$bp-600: 37.5em;      // 600px
 $bp-small: 28.125em;    // 450px
+$bp-extra_small: 21.875em;    // 350px
 
 :root {
     --header-height: 6rem;

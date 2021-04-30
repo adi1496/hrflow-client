@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({user}) => {
     return(
         <header className="header">
             <div className="header__content">
@@ -10,13 +10,13 @@ const Header = () => {
                     </div>
                     <nav className="header__nav">
                         <div className="header__item">
-                            <Link to="#" className="header__link">Home</Link>
+                            <Link to="/" className="header__link">Home</Link>
                         </div>
                         <div className="header__item">
-                            <Link to="#" className="header__link">People</Link>
+                            <Link to="/people" className="header__link">People</Link>
                         </div>
                         <div className="header__item">
-                            <Link to="#" className="header__link">Teams</Link>
+                            <Link to="/teams" className="header__link">Teams</Link>
                         </div>
                     </nav>
                 </div>
@@ -26,7 +26,7 @@ const Header = () => {
                     <div className="header__user">
                         <img src="img/user-adi.jpg" alt="user" className="header__user-photo" />
                         <div className="header__user-text">
-                            <span className="header__user-name">Adrian</span>
+                            <span className="header__user-name">{user.firstName}</span>
                             <div className="header__user-arrow"></div>
                         </div>
                     </div>

@@ -1,6 +1,13 @@
+import { useState } from "react";
 
 const MyProfile = ({user}) => {
     const noData = 'Not Specified';
+    const [profileTabActive, setProfileTabActive] = useState(null)
+    console.log(user);
+
+    const handleTab = e => {
+        
+    }
 
     return(
         <div className="profile">
@@ -47,7 +54,7 @@ const MyProfile = ({user}) => {
                 </div>
 
                 <div className="profile__tabs">
-                    <button className="profile__tab profile__tab--active">Personal Information</button>
+                    <button onClick={handleTab} className="profile__tab profile__tab--active">Personal Information</button>
                     <button className="profile__tab">Qualifications</button>
                     <button className="profile__tab">Banking Information</button>
                     <button className="profile__tab">Job Information</button>
@@ -62,7 +69,6 @@ const MyProfile = ({user}) => {
                         <ProfileInfoBox label='Martial Status:' value={user.martialStatus || noData} />
                         <ProfileInfoBox label='Date of Birth' value={user.dateOfBirth || noData} />
                         <ProfileInfoBox label='Title' value={user.title || noData} />
-                        <ProfileInfoBox label={`Father's name`} value={user.fatherName || noData} />
                         <ProfileInfoBox label='Nationality' value={user.nationality || noData} />
                         
                     </div>

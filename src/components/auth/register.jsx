@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 
 import LogoSVG from './../logo/logo-svg.jsx';
 import {fetchPOST} from './../../utils/fetch.js';
-import AppMsg from './../app-messages/app-msg.jsx';
 
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -19,26 +18,10 @@ const Register = () => {
     const [address, setAddress] = useState('');
     const [postalCode, setPostalCode] = useState('');
 
-    const [appMessage, setAppMessage] = useState({
-        hidden: true,
-        error: false,
-        message: '',
-    });
-
-    const handleAppMessageBtn = event => {
-        event.preventDefault();
-        setAppMessage({
-            hidden: true,
-            error: false,
-            message: ''
-        })
-    }
-
-
     const handleSubmit = async event => {
         event.preventDefault();
         if(!numberEmployees) {
-            setAppMessage({
+            window.setAppMessage({
                 hidden: false,
                 error: true,
                 message: 'Please select numbers of Employees plan'
@@ -63,7 +46,7 @@ const Register = () => {
 
         for(let data in registerData) {
             if(!registerData[data]) {
-                setAppMessage({
+                window.setAppMessage({
                     hidden: false,
                     error: true,
                     message: 'Please fiil all camps'
@@ -74,13 +57,7 @@ const Register = () => {
 
         const response = await fetchPOST('/api/v1/auth/signup-company', registerData);
 
-        if(response.status === 'fail' || response.status === 'error') return setAppMessage({
-            hidden: false,
-            error: true,
-            message: response.message
-        });
-
-        setAppMessage({
+        window.setAppMessage({
             hidden: false,
             error: false,
             message: 'Company registered successfully! Please check your email for verification!'
@@ -92,7 +69,7 @@ const Register = () => {
 
     return (
     <div className="main-login">
-        <AppMsg appMessage={appMessage} handleAppMessageBtn={handleAppMessageBtn} />
+        
         <div className="login">
             <div className="login__logo"><LogoSVG/></div>
     

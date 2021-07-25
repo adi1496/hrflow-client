@@ -5,28 +5,15 @@ import Header from './components/header+nav/header.jsx';
 import UserNavigation from './components/header+nav/user-nav.jsx';
 import MyProfile from './components/main/profile/my-profile.jsx';
 import Onboarding from './components/main/onboarding/onboarding.jsx';
-import AppMsg from './components/app-messages/app-msg.jsx';
+// import AppMsg from './components/app-messages/app-msg.jsx';
 
 const Application = ({user}) => {
 
-    const [appMessage, setAppMessage] = useState({
-        hidden: true,
-        error: false,
-        message: '',
-    });
-    window.setAppMessage = setAppMessage;
-    const handleAppMessageBtn = event => {
-        event.preventDefault();
-        setAppMessage({
-            hidden: true,
-            error: false,
-            message: ''
-        })
-    }
-    
+
+
+    // Return container
     return (
         <div className='body-container'>
-            <AppMsg appMessage={appMessage} handleAppMessageBtn={handleAppMessageBtn} />
             <Header user={user} />
             <UserNavigation user={user} />
             <div className="main">

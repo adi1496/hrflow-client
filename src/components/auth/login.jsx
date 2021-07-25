@@ -3,17 +3,11 @@ import { Link, Redirect } from "react-router-dom";
 
 import LogoSVG from './../logo/logo-svg.jsx';
 import {fetchPOST} from './../../utils/fetch.js';
-import AppMsg from './../app-messages/app-msg.jsx';
 
 const Login = ({user, handleUser}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [appMessage, setAppMessage] = useState({
-        hidden: true,
-        error: false,
-        message: ''
-    });
 
     const handleLogin = async () => {
         const loginData = {
@@ -23,7 +17,7 @@ const Login = ({user, handleUser}) => {
 
         for(let data in loginData) {
             if(!loginData[data]) {
-                setAppMessage({
+                window.setAppMessage({
                     hidden: false,
                     error: true,
                     message: 'Please fiil all camps'
@@ -33,29 +27,16 @@ const Login = ({user, handleUser}) => {
         }
 
         const response = await fetchPOST('/api/v1/auth/login', loginData);
-        if(response.status === 'fail' || response.status === 'error') return setAppMessage({
-            hidden: false,
-            error: true,
-            message: response.message
-        });
+        if(!response) return;
 
         localStorage.setItem('jwt', response.data.token);
-        setAppMessage({
+        window.setAppMessage({
             hidden: false,
             error: false,
-            message: 'You are logged'
+            message: 'You are logged in!'
         });
 
         handleUser(response.data.token);
-    }
-
-    const handleAppMessageBtn = event => {
-        event.preventDefault();
-        setAppMessage({
-            hidden: true,
-            error: false,
-            message: ''
-        })
     }
 
     if(user) {
@@ -63,7 +44,6 @@ const Login = ({user, handleUser}) => {
     }else {
         return(
         <div className="main-login">
-                <AppMsg appMessage={appMessage} handleAppMessageBtn={handleAppMessageBtn} />
 
             <div className="login">
                 <div className="login__logo"><LogoSVG/></div>

@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: max-content 1fr;
 
-    @media only screen and (max-width: $bp-600) {
+    @media only screen and (max-width: $bp-large) {
         grid-template-columns: 1fr;
     }
 
@@ -59,7 +59,7 @@
     &__photo {
         margin-top: 10rem;
 
-        @media only screen and (max-width: $bp-600) {
+        @media only screen and (max-width: $bp-large) {
             margin-top: 0;
             justify-self: center;
         }
@@ -76,17 +76,24 @@
     &__form {
         padding: 3rem 4rem;
         color: $color-special1-dark;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        // gap: 2rem;
 
-        @media only screen and (max-width: $bp-small) {
-            grid-template-columns: 1fr;
-        }
+        // @media only screen and (max-width: $bp-small) {
+        //     grid-template-columns: 1fr;
+        // }
 
         @media only screen and (max-width: $bp-extra_small) {
             padding: 3rem 1rem;
         }
+    }
+
+    &__page {
+        width: 70%;
+        // margin: 0 auto;
     }
 
     &__form-box {
@@ -95,7 +102,7 @@
         // flex-direction: column;
         // flex-grow: -1;
         display: grid;
-        grid-template-columns: max-content;
+        grid-template-columns: 1fr;
 
         @media only screen and (max-width: $bp-small) {
             grid-template-columns: 1fr;
@@ -126,12 +133,12 @@
     }
 
     &__select {
-
+        // text-align-last:center;
     }
 
 
     &__buttons {
-        grid-column: 1 / -1;
+        width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         justify-items: start;

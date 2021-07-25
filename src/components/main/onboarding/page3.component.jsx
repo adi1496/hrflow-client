@@ -1,8 +1,16 @@
+import CreateInputFields from './createFields.jsx';
 
-const Page3 = () => {
+const Page3 = ({fields, handleInputChange}) => {
     return(
         <div className="onboarding__page">
-            <div className="onboarding__form-box">
+            {fields.map((field, index) => {
+                return <CreateInputFields key={index} field={field} hadleInputChange={handleInputChange} />
+            })}
+
+
+
+
+            {/* <div className="onboarding__form-box">
                 <label htmlFor="" className="onboarding__label">Departament</label>
                 <select className="onboarding__select" name="" id="">
                     <option value="sales">Sales</option>
@@ -45,7 +53,7 @@ const Page3 = () => {
             <div className="onboarding__form-box">
                 <label htmlFor="" className="onboarding__label">Contract(not finished)</label>
                 <input type="text" className="onboarding__input" />
-            </div>
+            </div> */}
             
 
         </div>

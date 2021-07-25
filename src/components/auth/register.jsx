@@ -57,6 +57,8 @@ const Register = () => {
 
         const response = await fetchPOST('/api/v1/auth/signup-company', registerData);
 
+        if(!response) return;
+
         window.setAppMessage({
             hidden: false,
             error: false,

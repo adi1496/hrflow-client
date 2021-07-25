@@ -1,25 +1,14 @@
+import CreateInputFields from './createFields.jsx';
 
-const Page2 = () => {
+const Page2 = ({fields, handleInputChange}) => {
     return(
         <div className="onboarding__page">
-            <div className="onboarding__form-box">
-                <label htmlFor="" className="onboarding__label">Phone Number</label>
-                <input type="text" className="onboarding__input" />
-            </div>
-            <div className="onboarding__form-box">
-                <label htmlFor="" className="onboarding__label">Address</label>
-                <input type="text" className="onboarding__input" />
-            </div>
-            <div className="onboarding__form-box">
-                <label htmlFor="" className="onboarding__label">City</label>
-                <input type="text" className="onboarding__input" />
-            </div>
+            {fields.map((field, index) => {
+                return <CreateInputFields key={index} field={field} handleInputChange={handleInputChange} />
+            })}
+
             {/* <div className="onboarding__form-box">
-                <label htmlFor="" className="onboarding__label">Father's Name</label>
-                <input type="text" className="onboarding__input" />
-            </div> */}
-            <div className="onboarding__form-box">
-                <label htmlFor="" className="onboarding__label">Postal Code</label>
+                <label htmlFor="" className="onboarding__label">Phone Number</label>
                 <input type="text" className="onboarding__input" />
             </div>
             <div className="onboarding__form-box">
@@ -31,14 +20,17 @@ const Page2 = () => {
                     <option value="it">Italy</option>
                 </select>
             </div>
-            {/*
             <div className="onboarding__form-box">
-                <label htmlFor="" className="onboarding__label">Nationality</label>
+                <label htmlFor="" className="onboarding__label">Postal Code</label>
                 <input type="text" className="onboarding__input" />
             </div>
             <div className="onboarding__form-box">
-                <label htmlFor="" className="onboarding__label">Date of Birth</label>
-                <input className="onboarding__date" type="date" name="" id="" />
+                <label htmlFor="" className="onboarding__label">City</label>
+                <input type="text" className="onboarding__input" />
+            </div>
+            <div className="onboarding__form-box">
+                <label htmlFor="" className="onboarding__label">Address</label>
+                <input type="text" className="onboarding__input" />
             </div> */}
 
         </div>

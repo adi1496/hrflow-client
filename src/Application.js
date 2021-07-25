@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Header from './components/header+nav/header.jsx';
@@ -22,7 +22,7 @@ const Application = ({user}) => {
                     <Route exact path='/my-profile'>
                         <MyProfile user={user} />
                     </Route>
-                    <Route exact path='/onboarding'>
+                    <Route path='/onboarding'>
                         <Onboarding />
                     </Route>
 

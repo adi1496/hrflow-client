@@ -53,7 +53,19 @@
         width: 0%;
         background-color: $color-special1;
         border-radius: 100px;
-        animation: progress-bar-placeholder 10s ease-in;
+        transition: width 2s;
+
+        &--1 {
+            width: 15%;
+        }
+
+        &--2 {
+            width: 66.66%;
+        }
+
+        &--3 {
+            width: 100%;
+        }
     }
 
     &__photo {
@@ -155,18 +167,31 @@
         cursor: pointer;
         position: relative;
         overflow: hidden;
-        
-        &--next {
+
+        &--next, &--finish {
             justify-self: end;
             background-color: $color-special1;
             text-align: left;
             clip-path: polygon(0 0, 70% 0, 100% 50%, 70% 100%, 0 100%);
+        }
+        
+        &--next {
+            background-color: $color-special1;
+        }
+
+        &--finish {
+            background-color: $color-primary;
+            // color: $color-primary-dark;
         }
 
         &--back {
             background-color: $color-special2;
             text-align: right;
             clip-path: polygon(100% 0, 30% 0, 0 50%, 30% 100%, 100% 100%);
+        }
+
+        &--hide {
+            visibility: hidden;
         }
     }
 

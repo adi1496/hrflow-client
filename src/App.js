@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {Switch, Route, Redirect} from "react-router-dom";
+import {Route, Redirect} from "react-router-dom";
 
 import AppMsg from "./components/app-messages/app-msg.jsx";
 import Login from './components/auth/login.jsx';
@@ -62,8 +62,8 @@ const handleAppMessageBtn = event => {
         <AppMsg appMessage={appMessage} handleAppMessageBtn={handleAppMessageBtn} />
         <Route exact path='/login'>{user ? <Redirect to='/'/> : <Login user={user} handleUser={handleUser} />}</Route>
         <Route exact path='/register'>{user ? <Redirect to='/'/> : <Register/>}</Route>
-        <Route>{user ? <Application user={user} /> :
-          <Redirect to='/login' />}</Route>
+        <Route path='/'>{user ? <Application user={user} /> : <Redirect to='/login' />}</Route>
+        {/* <Route> <Application user={user} /> </Route> */}
     </div>
       // {/* </Switch> */}
   )

@@ -76,12 +76,12 @@
             margin-right: 1rem;
         }
 
-        &:hover {
+        &:hover, &--active {
             color: $color-special2;
             transform: translateX(.5rem);
         }
 
-        &:hover &--icon {
+        &:hover &--icon, &--active &--icon {
             fill: $color-special2;
         }
     }

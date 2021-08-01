@@ -4,7 +4,7 @@ export const employeePersonalInformation = [
         display: 'Title',
         name: 'title',
         type: 'select',
-        values: [null, 'Mr.', 'Ms.', 'Mrs.']
+        values: ['Mr.', 'Ms.', 'Mrs.']
     },
     {
         display: 'First Name',
@@ -20,13 +20,13 @@ export const employeePersonalInformation = [
         display: 'Gender',
         name: 'gender',
         type: 'select',
-        values: [null, 'male', 'female', 'other']
+        values: ['male', 'female', 'other']
     },
     {
         display: 'Martial Status',
         name: 'martialStatus',
         type: 'select',
-        values: [null, 'single', 'married', 'separated', 'divorced']
+        values: ['single', 'married', 'separated', 'divorced']
     },
     {
         display: 'Nationality',
@@ -50,7 +50,7 @@ export const employeeContact = [
         display: 'Country',
         name: 'country',
         type: 'select',
-        values: [null, 'Romania', 'United Kingdom', 'Italy', 'Germany']
+        values: ['Romania', 'United Kingdom', 'Italy', 'Germany']
     },
     {
         display: 'Postal Code',
@@ -74,13 +74,13 @@ export const employeeWorkInformation = [
         display: 'Department',
         name: 'department',
         type: 'select',
-        values: [null, 'sales', 'development', 'marketing']
+        values: ['sales', 'development', 'marketing']
     },
     {
         display: 'Position',
         name: 'position',
         type: 'select',
-        values: [null,'js dev', 'C++ dev', 'react dev']
+        values: ['js dev', 'C++ dev', 'react dev']
     },
     {
         display: 'Start Contract Date',

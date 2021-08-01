@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import LogoSVG from './../logo/logo-svg.jsx';
 import {fetchPOST} from './../../utils/fetch.js';
 
-const Login = ({user, handleUser}) => {
+const Login = ({handleUser}) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -38,10 +38,6 @@ const Login = ({user, handleUser}) => {
 
         handleUser(response.data.token);
     }
-
-    if(user) {
-        return (<Redirect to='/' />);
-    }else {
         return(
         <div className="main-login">
 
@@ -74,8 +70,6 @@ const Login = ({user, handleUser}) => {
             </div>
         </div>
         )
-
-    }
 
 }
 

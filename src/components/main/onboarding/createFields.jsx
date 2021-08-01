@@ -5,8 +5,8 @@ const CreateInputFields = ({field, handleInputChange}) => {
             <div className="onboarding__form-box">
                 <label htmlFor="" className="onboarding__label">{field.display}</label>
                 <select className="onboarding__select" onChange={handleInputChange} name={field.name}>
+                    <option value="" defaultValue>Select an option</option>
                     {field.values.map((val, index) => {
-                        if(index === 0) return <option key={index} disabled selected value={val}>Select an option</option>
                         return <option key={index} value={val}>{val}</option>
                     })}
                 </select>

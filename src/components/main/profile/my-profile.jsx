@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, Route, useLocation } from "react-router-dom";
 
 const MyProfile = ({user}) => {
     const noData = 'Not Specified';
-    const [profileTabActive, setProfileTabActive] = useState(null)
-    console.log(user);
+    const [profileTabActive, setProfileTabActive] = useState(new URLSearchParams (useLocation().search).get('page'));
+    console.log(profileTabActive);
 
     const handleTab = e => {
-        
+        console.log('link to');
+        return <Link to='/' />
     }
+
+    // console.log(useLocation());
 
     return(
         <div className="profile">
@@ -47,17 +51,17 @@ const MyProfile = ({user}) => {
                         </div>
                     </div>
                     <div className="profile__details-actions">
-                        <button className="profile__delete">Del</button>
+                        <button className="profile__delete">Delete</button>
                         <button className="profile__suspend">Suspend</button>
                         <button className="profile__edit">Edit</button>
                     </div>
                 </div>
 
                 <div className="profile__tabs">
-                    <button onClick={handleTab} className="profile__tab profile__tab--active">Personal Information</button>
-                    <button className="profile__tab">Qualifications</button>
-                    <button className="profile__tab">Banking Information</button>
-                    <button className="profile__tab">Job Information</button>
+                    <button onClick={handleTab} className={`profile__tab ${(!profileTabActive||profileTabActive==='personal-info')?'profile__tab--active':''}`}>Personal Information</button>
+                    <button className={`profile__tab ${profileTabActive==='qualifications'?'profile__tab--active':''}`}>Qualifications</button>
+                    <button className={`profile__tab ${profileTabActive==='bank-info'?'profile__tab--active':''}`}>Banking Information</button>
+                    <button className={`profile__tab ${profileTabActive==='job-info'?'profile__tab--active':''}`}>Job Information</button>
                 </div>
 
                 <div className="profile__personal-info">

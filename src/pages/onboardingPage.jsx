@@ -1,10 +1,9 @@
 // import { Switch, Route } from 'react-router-dom';
 import { useState } from "react";
 
-import {employeePersonalInformation, employeeContact, employeeWorkInformation} from './camps.js';
-import Page1 from './page1.component.jsx';
-import Page2 from './page2.component.jsx';
-import Page3 from './page3.component.jsx';
+import FormFieldsComponent from '../components/main/onboarding/formFields.component.jsx';
+// import Page2 from './page2.component.jsx';
+// import Page3 from './page3.component.jsx';
 
 const Onboarding = () => {
     const [page, setPage] = useState(1);
@@ -64,9 +63,7 @@ const Onboarding = () => {
                 </figure>
 
                 <form className="onboarding__form" action="">
-                    {page === 1 ? <Page1 fields={employeePersonalInformation} handleInputChange={handleInputChange} /> : ''}
-                    {page === 2 ? <Page2 fields={employeeContact} handleInputChange={handleInputChange} /> : ''}
-                    {page === 3 ? <Page3 fields={employeeWorkInformation} handleInputChange={handleInputChange} /> : ''}
+                    <FormFieldsComponent page={page} handleInputChange={handleInputChange} />
 
                     <div className="onboarding__buttons">
                         <button className={`onboarding__button onboarding__button--${page === 1 ? 'hide' : 'back'}`} onClick={handleBack}>Back</button>

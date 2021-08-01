@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom"
 
 import {useForm} from './../../customHooks/useForm.js';
@@ -106,7 +106,7 @@ const Register = () => {
                     <label htmlFor="numberEmployees" className="login__label">Number of Employees</label>
                     <div className="login__select-div">
                         <select onChange={setRegister} id="numberEmployees" name="numberEmployees" className="login__select">
-                        <option value="" defaultValue>Select</option>
+                            <option value="" defaultValue>Select</option>
                             <option value="0-20">0-20</option>
                             <option value="20-100">20-100</option>
                             <option value="100-500">100-500</option>
